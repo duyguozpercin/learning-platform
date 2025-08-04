@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Link } from 'lucide-react';
+import Link from 'next/link'
 
 interface CompanionCardProps {
   id: string;
@@ -11,9 +11,9 @@ interface CompanionCardProps {
   color: string;
 }
 
-const CompanionCard = ({id, name, topic, subject, duration, color}: CompanionCardProps) => {
+const CompanionCard = ({ id, name, topic, subject, duration, color }: CompanionCardProps) => {
   return (
-    <article className='companion-card' style={{backgroundColor: color}}>
+    <article className='companion-card' style={{ backgroundColor: color }}>
       <div className='flex justify-between items-center'>
         <div className='subject-badge'>{subject}</div>
         <button className='companion-bookmark'>
@@ -27,9 +27,9 @@ const CompanionCard = ({id, name, topic, subject, duration, color}: CompanionCar
         <p className='texsm'>{duration} minutes</p>
       </div>
       <Link href={`/companions/${id}`} className='w-full'>
-      <button className='btn-primary w-full justify-center'>
-        Launch Lesson
-      </button>
+        <button className='btn-primary w-full justify-center'>
+          Launch Lesson
+        </button>
       </Link>
     </article>
   )
