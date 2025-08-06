@@ -47,6 +47,9 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                         height={35}
                       />
                     </div>
+                    <div className="flex flex-col gap-2">
+                      <p className="font-bold text-2xl">{name}</p>
+                    </div>
                   </div>
                 </Link>
               </TableCell>
