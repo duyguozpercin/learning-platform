@@ -65,6 +65,21 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                   />
                 </div>
               </TableCell>
+              <div className="flex items-center gap-2 w-full justify-end">
+                <p className="text-2xl">{duration} {' '}
+                  <span className="max-md:hidden">mins</span>
+                </p>
+                <Image
+                  src="/icons/clock.svg"
+                  alt="minutes"
+                  width={14}
+                  height={14}
+                  className="md:hidden"
+                />
+              </div>
+              <TableCell>
+
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
