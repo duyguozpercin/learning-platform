@@ -49,9 +49,21 @@ const CompanionsList = ({ title, companions, classNames }: CompanionsListProps) 
                     </div>
                     <div className="flex flex-col gap-2">
                       <p className="font-bold text-2xl">{name}</p>
+                      <p className="text-lg">{topic}</p>
                     </div>
                   </div>
                 </Link>
+              </TableCell>
+              <TableCell>
+                <div className="subject-badge w-fit max-md:hidden">{subject}</div>
+                <div className="flex items-center justify-center rounded-lg w-fit p-2 md:hidden" style={{backgroundColor: getSubjectColor(subject)}}>
+                  <Image
+                    src={`/icons/${subject}.svg`}
+                    alt={subject}
+                    width={18}
+                    height={18}
+                  />
+                </div>
               </TableCell>
             </TableRow>
           ))}
