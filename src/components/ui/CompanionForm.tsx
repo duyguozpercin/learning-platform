@@ -14,7 +14,7 @@ const formSchema = z.object({
 
 
 const CompanionForm = () => {
-// 1. Define your form.
+
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
@@ -27,10 +27,9 @@ const form = useForm<z.infer<typeof formSchema>>({
   },
 })
 
-// 2. Define a submit handler.
-function onSubmit(values: z.infer<typeof formSchema>) {
-  // Do something with the form values.
-  // ✅ This will be type-safe and validated.
+
+const onSubmit = (values: z.infer<typeof formSchema>) => {
+  
   console.log(values)
 }
 
