@@ -13,6 +13,16 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { subjects } from "@/constants/index"
+
+// Define the form schema using Zod
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Companion is required' }),
@@ -26,23 +36,23 @@ const formSchema = z.object({
 
 const CompanionForm = () => {
 
-const form = useForm<z.infer<typeof formSchema>>({
-  resolver: zodResolver(formSchema),
-  defaultValues: {
-    name: "",
-    subject: "",
-    topic: "",
-    voice: "",
-    style: "",
-    duration: 15,
-  },
-})
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      subject: "",
+      topic: "",
+      voice: "",
+      style: "",
+      duration: 15,
+    },
+  })
 
 
-const onSubmit = (values: z.infer<typeof formSchema>) => {
-  
-  console.log(values)
-}
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+
+    console.log(values)
+  }
 
   return (
     <Form {...form}>
@@ -52,13 +62,96 @@ const onSubmit = (values: z.infer<typeof formSchema>) => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Companion name</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Enter the companion name"
+                  {...field}
+                  className="input" />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+
+              <FormMessage />
+            </FormItem>
+
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}>
+                  <SelectTrigger className="input capitalize">
+                    <SelectValue placeholder="Select the subject" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {subjects.map((subject) => (
+                      <SelectItem 
+                      key={subject} 
+                      value={subject} 
+                      className="capitalize">
+                        {subject}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter the subject" {...field} className="input" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter the subject" {...field} className="input" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter the subject" {...field} className="input" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter the subject" {...field} className="input" />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
