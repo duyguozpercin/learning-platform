@@ -21,8 +21,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { subjects } from "@/constants/index"
+import { Textarea } from "@/components/ui/textarea"
 
-// Define the form schema using Zod
+
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Companion is required' }),
@@ -106,12 +107,15 @@ const CompanionForm = () => {
         />
         <FormField
           control={form.control}
-          name="subject"
+          name="topic"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>What should the companion help with?</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the subject" {...field} className="input" />
+                <Textarea
+                placeholder="Ex. Derivates & Intregals" 
+                {...field} 
+                className="input" />
               </FormControl>
               <FormMessage />
             </FormItem>
