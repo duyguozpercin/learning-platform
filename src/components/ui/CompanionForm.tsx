@@ -123,12 +123,31 @@ const CompanionForm = () => {
         />
         <FormField
           control={form.control}
-          name="subject"
+          name="voice"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>Voice</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the subject" {...field} className="input" />
+                <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}>
+                  <SelectTrigger className="input">
+                    <SelectValue placeholder="Select the voice" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    
+                      <SelectItem
+                      value="male" >
+                        Male
+                      </SelectItem>
+                      <SelectItem
+                      value="female" >
+                        Female
+                      </SelectItem>
+                    
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -136,10 +155,42 @@ const CompanionForm = () => {
         />
         <FormField
           control={form.control}
-          name="subject"
+          name="style"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>Style</FormLabel>
+              <FormControl>
+                <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+                value={field.value}>
+                  <SelectTrigger className="input">
+                    <SelectValue placeholder="Select the style" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    
+                      <SelectItem
+                      value="formal" >
+                        Formal
+                      </SelectItem>
+                      <SelectItem
+                      value="casual" >
+                        Casual
+                      </SelectItem>
+                    
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="style"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Style</FormLabel>
               <FormControl>
                 <Input placeholder="Enter the subject" {...field} className="input" />
               </FormControl>
@@ -147,6 +198,7 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
+        
         <FormField
           control={form.control}
           name="subject"
