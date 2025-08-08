@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NavItems from './NavItems'
 import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import {SignIn} from '@clerk/nextjs'
 
 const Navbar = () => {
   return (
@@ -26,7 +27,11 @@ const Navbar = () => {
             </SignInButton>
           
         </SignedOut>
-        <p>Sign Out</p>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+
+        
       </div>
     </nav>
   )
