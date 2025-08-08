@@ -185,34 +185,25 @@ const CompanionForm = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="style"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Style</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter the subject" {...field} className="input" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         
         <FormField
           control={form.control}
-          name="subject"
+          name="duration"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>Estimated session duration in minutes</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the subject" {...field} className="input" />
+                <Input 
+                type="number"
+                placeholder="Enter the subject" 
+                {...field} 
+                className="input" />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-full cursor-pointer">Build Your Companion</Button>
       </form>
     </Form>
   )
