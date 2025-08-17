@@ -15,3 +15,5 @@ const { data, error } = await supabase
 if (error || !data) throw new Error(error?.message || 'Failed to create companion');
 return data[0];
 }
+
+export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }: GetAllCompanions) => {}
