@@ -4,7 +4,6 @@ import {useEffect, useRef, useState} from 'react'
 import {cn, configureAssistant, getSubjectColor} from "@/lib/utils";
 import {vapi} from "@/lib/vapi.sdk";
 import Image from "next/image";
-// @ts-ignore: lottie-react has no bundled type declarations in this project
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import soundwaves from '@/constants/soundwaves.json'
 import {addToSessionHistory} from "@/lib/actions/companion.actions";
