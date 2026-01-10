@@ -1,4 +1,4 @@
-import CompanionForm from "@/components/ui/CompanionForm"
+import CompanionForm from "@/components/CompanionForm"
 
 
 const NewCompanion = () => {
