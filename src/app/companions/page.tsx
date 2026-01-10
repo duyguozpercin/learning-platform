@@ -1,6 +1,7 @@
-import {getAllCompanions} from "@/lib/actions/companion.actions";
+import { auth } from "@clerk/nextjs/server";
+import { getAllCompanions, getBookmarkedCompanionIds } from "@/lib/actions/companion.actions";
 import CompanionCard from "@/components/CompanionCard";
-import {getSubjectColor} from "@/lib/utils";
+import { getSubjectColor } from "@/lib/utils";
 import SearchInput from "@/components/SearchInput";
 import SubjectFilter from "@/components/SubjectFilter";
 
@@ -9,7 +10,15 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
     const subject = filters.subject ? filters.subject : '';
     const topic = filters.topic ? filters.topic : '';
 
+    const { userId } = await auth();
+
     const companions = await getAllCompanions({ subject, topic });
+
+    const bookmarkedIds = userId
+        ? await getBookmarkedCompanionIds(userId)
+        : [];
+
+    const bookmarkedSet = new Set(bookmarkedIds);
 
     return (
         <main>
@@ -26,6 +35,9 @@ const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
                         key={companion.id}
                         {...companion}
                         color={getSubjectColor(companion.subject)}
+                        userId={userId}
+                        isBookmarked={bookmarkedSet.has(companion.id)}
+                        revalidatePath="/companions"
                     />
                 ))}
             </section>
