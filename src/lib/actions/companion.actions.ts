@@ -69,31 +69,54 @@ export const addToSessionHistory = async (companionId: string) => {
 }
 
 export const getRecentSessions = async (limit = 10) => {
-    const supabase = createSupabaseClient();
-    const { data, error } = await supabase
-        .from('session_history')
-        .select(`companions:companion_id (*)`)
-        .order('created_at', { ascending: false })
-        .limit(limit)
+  const supabase = createSupabaseClient();
 
-    if(error) throw new Error(error.message);
+  const { data, error } = await supabase
+    .from("session_history")
+    .select(`companions:companion_id (*)`)
+    .order("created_at", { ascending: false })
+    .limit(limit);
 
-    return data.map(({ companions }) => companions);
-}
+  if (error) throw new Error(error.message);
+
+
+  const companions = data
+    .map(({ companions }) => companions)
+    .filter(Boolean);
+
+ 
+  const unique = Array.from(
+    new Map(companions.map((c: any) => [c.id, c])).values()
+  );
+
+  return unique;
+};
+
 
 export const getUserSessions = async (userId: string, limit = 10) => {
-    const supabase = createSupabaseClient();
-    const { data, error } = await supabase
-        .from('session_history')
-        .select(`companions:companion_id (*)`)
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(limit)
+  const supabase = createSupabaseClient();
 
-    if(error) throw new Error(error.message);
+  const { data, error } = await supabase
+    .from("session_history")
+    .select(`companions:companion_id (*)`)
+    .eq("user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
 
-    return data.map(({ companions }) => companions);
-}
+  if (error) throw new Error(error.message);
+
+  const companions = (data ?? [])
+    .map(({ companions }) => companions)
+    .filter(Boolean);
+
+
+  const unique = Array.from(
+    new Map(companions.map((c: any) => [c.id, c])).values()
+  );
+
+  return unique;
+};
+
 
 export const getUserCompanions = async (userId: string) => {
     const supabase = createSupabaseClient();
